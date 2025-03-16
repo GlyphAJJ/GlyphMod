@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glyph - Rocket League Mod</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://static.wikia.nocookie.net/fortnite/images/4/46/Turbo_Ball%21_-_Back_Bling_-_Fortnite.png/revision/latest?cb=20210325114715" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://static.wikia.nocookie.net/fortnite/images/4/46/Turbo_Ball%21_-_Back_Bling_-_Fortnite.png/revision/latest?cb=20210325114715" />
+    <link rel="shortcut icon" href="https://static.wikia.nocookie.net/fortnite/images/4/46/Turbo_Ball%21_-_Back_Bling_-_Fortnite.png/revision/latest?cb=20210325114715" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-red: #ff2e2e;
+            --dark-grey: #2d2d2d;
+            --light-grey: #f5f5f5;
+            --discord-color: #5865F2;
+            --discord-dark: #36393f;
+            --star-color: #FFD700;
+            --success-green: #4BB543;
+        }
+
+        body {
+            background-color: var(--light-grey);
+        }
+
+        nav {
+            background-color: var(--dark-grey);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-glyph {
+            color: white;
+        }
+        
+        .logo-mod {
+            color: var(--primary-red);
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(255, 46, 46, 0.8), rgba(45, 45, 45, 0.9)),
+                        url('https://images.steamusercontent.com/ugc/80339917954151566/3CB9761163B46FC5F38B822CCD28E7AE9AEFBAB5/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .download-btn {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background-color: #cc2525;
+        }
+
+        .features {
+            padding: 5rem 5%;
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background-color: var(--light-grey);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: var(--dark-grey);
+            margin: 1rem 0;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        footer {
+            background-color: var(--dark-grey);
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .discord-page, .reviews-page {
+            display: none;
+            height: 100vh;
+            background-color: var(--discord-dark);
+            color: white;
+        }
+
+        .discord-container, .reviews-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+            margin-top: 60px;
+        }
+
+        .discord-logo {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .discord-container h1, .reviews-container h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .discord-container p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .highlight-glyph {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .highlight-mod {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .join-btn {
+            background-color: var(--discord-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .join-btn:hover {
+            background-color: #4752c4;
+        }
+
+        .main-content {
+            display: block;
+        }
+
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .review-author {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .review-rating {
+            color: var(--star-color);
+            letter-spacing: 3px;
+        }
+
+        .review-content {
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-date {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: right;
+        }
+
+        .reviews-container {
+            justify-content: flex-start;
+            overflow-y: auto;
+            padding-top: 120px;
+            padding-bottom: 30px;
+        }
+
+        /* Review form styles */
+        .write-review-btn {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: background-color 0.3s;
+        }
+
+        .write-review-btn:hover {
+            background-color: #cc2525;
+        }
+
+        .review-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            max-width: 800px;
+            width: 100%;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Updated star rating system - more compact */
+        .star-rating {
+            direction: rtl;
+            display: inline-block;
+            unicode-bidi: bidi-override;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            color: #444;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 2rem;
+            padding: 0 0.1rem;
+        }
+
+        .star-rating label:before {
+            content: "★";
+        }
+
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: var(--star-color);
+        }
+
+        .submit-review-btn {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-review-btn:hover {
+            background-color: #cc2525;
+        }
+
+        .word-count {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: right;
+            margin-top: 0.3rem;
+        }
+
+        .thankyou-message {
+            background-color: var(--success-green);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            display: none;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><span class="logo-glyph">Glyph</span><span class="logo-mod">Mod</span></div>
+            <div class="nav-links">
+                <a href="#features" class="main-nav">Features</a>
+                <a href="#download" class="main-nav">Download</a>
+                <a href="#" id="discord-link">Discord</a>
+                <a href="#" id="reviews-link">Reviews</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <section class="hero" id="download">
+            <div class="hero-content">
+                <h1>Enhance Your Gaming Experience</h1>
+                <p>Download the ultimate modification package for Rocket League</p>
+                <a href="https://drive.google.com/uc?export=download&id=1vyiUVUKto9Yodn_Wpe0ILlVustOgPWpE" class="download-btn">Download Now - v2.4.1</a>
+            </div>
+        </section>
+
+<section class="features" id="features">
+    <h2 style="text-align: center; color: var(--dark-grey); margin-bottom: 1rem;">
+        <span style="color: white; font-weight: bold; background-color: var(--dark-grey); padding: 0.2rem 0.5rem;">Mod</span>
+        <span style="color: var(--primary-red); font-weight: bold;">Features</span>
+    </h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>Ball Trajectory Visualization</h3>
+            <p>See and predict ball paths with our advanced trajectory tool to perfect ground control and aerial plays</p>
+        </div>
+        <div class="feature-card">
+            <h3>Network Performance Boost</h3>
+            <p>Enjoy improved ping and connection stability with our re-routed network traffic optimization</p>
+        </div>
+        <div class="feature-card">
+            <h3>Title Spawner</h3>
+            <p>Create and display custom titles during gameplay for a personalized experience or use pre-existing titles with server side compatability</p>
+        </div>
+        <div class="feature-card">
+            <h3>Item Spawner</h3>
+            <p>Enjoy the freedom and privilege of never being restricted by what items you can or can't use. With Glyph Mod, you can spawn any items at any time.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Recovery Correction</h3>
+            <p>With GlyphMod you can guarantee your car will never land awkwardly again with our recovery tool. This ensures your car always lands on all four wheels.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Content Creation Tools</h3>
+            <p>Special featuresn and roles for content creators, including advanced crate opening options and credit spawning</p>
+        </div>
+    </div>
+</section>
+
+        <footer>
+            <p>&copy; GlyphMod. Independent modification, not affiliated with Psyonix or Epic Games.</p>
+        </footer>
+    </div>
+
+    <div class="discord-page">
+        <div class="discord-container">
+            <svg class="discord-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 240">
+                <path d="M104.4 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1.1-6.1-4.5-11.1-10.2-11.1zM140.9 103.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.5-11.1-10.2-11.1z" fill="#5865F2"/>
+                <path d="M189.5 20h-134C44.2 20 35 29.2 35 40.6v135.2c0 11.4 9.2 20.6 20.5 20.6h113.4l-5.3-18.5 12.8 11.9 12.1 11.2 21.5 19V40.6c0-11.4-9.2-20.6-20.5-20.6zm-38.6 130.6s-3.6-4.3-6.6-8.1c13.1-3.7 18.1-11.9 18.1-11.9-4.1 2.7-8 4.6-11.5 5.9-5 2.1-9.8 3.5-14.5 4.3-9.6 1.8-18.4 1.3-25.9-.1-5.7-1.1-10.6-2.7-14.7-4.3-2.3-.9-4.8-2-7.3-3.4-.3-.2-.6-.3-.9-.5-.2-.1-.3-.2-.4-.3-1.8-1-2.8-1.7-2.8-1.7s4.8 8 17.5 11.8c-3 3.8-6.7 8.3-6.7 8.3-22.1-.7-30.5-15.2-30.5-15.2 0-32.2 14.4-58.3 14.4-58.3 14.4-10.8 28.1-10.5 28.1-10.5l1 1.2c-18 5.2-26.3 13.1-26.3 13.1s2.2-1.2 5.9-2.9c10.7-4.7 19.2-6 22.7-6.3.6-.1 1.1-.2 1.7-.2 6.1-.8 13-1 20.2-.2 9.5 1.1 19.7 3.9 30.1 9.6 0 0-7.9-7.5-24.9-12.7l1.4-1.6s13.7-.3 28.1 10.5c0 0 14.4 26.1 14.4 58.3 0 0-8.5 14.5-30.6 15.2z" fill="#5865F2"/>
+            </svg>
+            <h1>Join Our Discord Community</h1>
+            <p>Connect with other <span class="highlight-glyph">Glyph</span><span class="highlight-mod">Mod</span> users, get support, share your experiences, and stay updated on the latest releases and features!</p>
+            <a href="https://discord.gg/C6KDYq9Peb" class="join-btn" target="_blank">Join Server</a>
+        </div>
+    </div>
+
+    <div class="reviews-page">
+        <div class="reviews-container">
+            <h1><span style="color: white; font-weight: bold;">User</span><span style="color: var(--primary-red); font-weight: bold;">Reviews</span></h1>
+
+            <div class="thankyou-message" id="thankyou-message">
+                Thank you for your review! It has been submitted for approval.
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-author">DribbleWizard</div>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <div class="review-content">
+                    GlyphMod transformed my Rocket League experience entierly the ball trajectory visualization has helped me perfect my ground game. Been using it for 3 months with zero crashes or performance issues. Well worth downloading!
+                </div>
+                <div class="review-date">March 14, 2025</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-author">FreeStyleKing</div>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <div class="review-content">
+                    The mod is super stable compared to others I've tried, and the dev support on Discord is excellent.I love the custom title spawner because i can troll my freinds with it LOL! 10/10 would recommend.
+                </div>
+                <div class="review-date">February 27, 2025</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-author">Anonymous User</div>
+                    <div class="review-rating">★★★★☆</div>
+                </div>
+                <div class="review-content">
+                    Really impressed with how easy installation was. Only giving 4 stars because on some maps the ball trajectory tool is a bit buggy overall a good tool though.
+                </div>
+                <div class="review-date">February 21, 2025</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-author">Top_Right_Corner</div>
+                    <div class="review-rating">★★★★★</div>
+                </div>
+                <div class="review-content">
+                    The re-routed network trafficing made a noticable diffrance in my In-Game ping Mod setup was easy and lots of support from the discord! W mod!
+                </div>
+                <div class="review-date">February 18, 2025</div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-author">Anonymous User</div>
+                    <div class="review-rating">★★★★⋆</div>
+                </div>
+                <div class="review-content">
+                    Been using GlyphMod for my YouTube content and viewers always comment on how i have so many crate opening videos. The mod is much better than most in the market considering the price to feature comparison. Installation was straightforward but the plugin tool could use some work - hence 4.2 stars.
+                </div>
+                <div class="review-date">February 15, 2025</div>
+            </div>
+
+            <button class="write-review-btn" id="write-review-btn">Write a Review...</button>
+
+            <form class="review-form" id="review-form">
+                <div class="form-group">
+                    <label for="author">Your Name (optional):</label>
+                    <input type="text" id="author" placeholder="Anonymous User">
+                </div>
+                <div class="form-group">
+                    <label>Rating:</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required />
+                        <label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label for="star1"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="review">Your Review (minimum 10 words):</label>
+                    <textarea id="review" placeholder="Share your thoughts on GlyphMod..." required></textarea>
+                    <div class="word-count" id="word-count">0 words</div>
+                </div>
+                <button type="submit" class="submit-review-btn" id="submit-review" disabled>Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const discordLink = document.getElementById('discord-link');
+            const reviewsLink = document.getElementById('reviews-link');
+            const mainContent = document.querySelector('.main-content');
+            const discordPage = document.querySelector('.discord-page');
+            const reviewsPage = document.querySelector('.reviews-page');
+            const mainNavLinks = document.querySelectorAll('.main-nav');
+            const writeReviewBtn = document.getElementById('write-review-btn');
+            const reviewForm = document.getElementById('review-form');
+            const reviewTextarea = document.getElementById('review');
+            const wordCount = document.getElementById('word-count');
+            const submitReviewBtn = document.getElementById('submit-review');
+            const thankyouMessage = document.getElementById('thankyou-message');
+            const reviewsContainer = document.querySelector('.reviews-container');
+            
+            // Your Discord webhook URL
+            const webhookUrl = 'https://discord.com/api/webhooks/1350832428083839107/_19lifhRWBxKaiETagTbNc7aL8-UrJi2os56GaRo-NhxHRu3gH4BcbdDwa5b2UwyL3NI';
+            
+            discordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainContent.style.display = 'none';
+                discordPage.style.display = 'block';
+                reviewsPage.style.display = 'none';
+            });
+            
+            reviewsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainContent.style.display = 'none';
+                discordPage.style.display = 'none';
+                reviewsPage.style.display = 'block';
+            });
+            
+            mainNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainContent.style.display = 'block';
+                    discordPage.style.display = 'none';
+                    reviewsPage.style.display = 'none';
+                });
+            });
+            
+            // Handle Write Review button
+            writeReviewBtn.addEventListener('click', function() {
+                reviewForm.style.display = 'block';
+                writeReviewBtn.style.display = 'none';
+            });
+            
+            // Word count validation
+            reviewTextarea.addEventListener('input', function() {
+                const text = reviewTextarea.value.trim();
+                const words = text.split(/\s+/).filter(word => word.length > 0);
+                const count = words.length;
+                
+                wordCount.textContent = count + ' words';
+                
+                // Enable submit button if at least 10 words and a rating is selected
+                if (count >= 10 && document.querySelector('input[name="rating"]:checked')) {
+                    submitReviewBtn.disabled = false;
+                } else {
+                    submitReviewBtn.disabled = true;
+                }
+            });
+            
+            // Also check when rating is selected
+            document.querySelectorAll('input[name="rating"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const text = reviewTextarea.value.trim();
+                    const words = text.split(/\s+/).filter(word => word.length > 0);
+                    const count = words.length;
+                    
+                    if (count >= 10 && document.querySelector('input[name="rating"]:checked')) {
+                        submitReviewBtn.disabled = false;
+                    } else {
+                        submitReviewBtn.disabled = true;
+                    }
+                });
+            });
+            
+            // Handle form submission
+            reviewForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const author = document.getElementById('author').value || 'Anonymous User';
+                const rating = parseInt(document.querySelector('input[name="rating"]:checked').value);
+                const reviewText = reviewTextarea.value.trim();
+                const currentDate = new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'});
+                
+                // Generate star rating string
+                let stars = '';
+                for (let i = 0; i < 5; i++) {
+                    if (i < rating) {
+                        stars += '★';
+                    } else {
+                        stars += '☆';
+                    }
+                }
+                
+                // Prepare data for Discord webhook
+                const webhookData = {
+                    username: 'GlyphMod Review',
+                    embeds: [{
+                        title: `New Review Submission - ${stars}`,
+                        color: 16733795, // Red color
+                        fields: [
+                            {
+                                name: 'Author',
+                                value: author,
+                                inline: true
+                            },
+                            {
+                                name: 'Rating',
+                                value: `${rating}/5`,
+                                inline: true
+                            },
+                            {
+                                name: 'Date',
+                                value: currentDate,
+                                inline: true
+                            },
+                            {
+                                name: 'Review',
+                                value: reviewText
+                            }
+                        ],
+                        footer: {
+                            text: 'Review needs approval'
+                        }
+                    }]
+                };
+                
+                // Send the data to Discord webhook
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(webhookData)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Add review to the website if it has 3 stars or more
+                        if (rating >= 3) {
+                            // Create the new review card
+                            const newReviewCard = document.createElement('div');
+                            newReviewCard.className = 'review-card';
+                            
+                            newReviewCard.innerHTML = `
+                                <div class="review-header">
+                                    <div class="review-author">${author}</div>
+                                    <div class="review-rating">${stars}</div>
+                                </div>
+                                <div class="review-content">
+                                    ${reviewText}
+                                </div>
+                                <div class="review-date">${currentDate}</div>
+                            `;
+                            
+                            // Insert the new review card at the top (after the h1 and thankyou message)
+                            const firstReviewCard = reviewsContainer.querySelector('.review-card');
+                            reviewsContainer.insertBefore(newReviewCard, firstReviewCard);
+                        }
+                        
+                        // Show thank you message
+                        thankyouMessage.style.display = 'block';
+                        reviewForm.style.display = 'none';
+                        
+                        // Hide thank you message after 5 seconds
+                        setTimeout(() => {
+                            thankyouMessage.style.display = 'none';
+                            writeReviewBtn.style.display = 'block';
+                            
+                            // Reset form
+                            reviewForm.reset();
+                            wordCount.textContent = '0 words';
+                            submitReviewBtn.disabled = true;
+                        }, 5000);
+                    } else {
+                        console.error('Error sending review to Discord');
+                        alert('There was an error submitting your review. Please try again later.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your review. Please try again later.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
